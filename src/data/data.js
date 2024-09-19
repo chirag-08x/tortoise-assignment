@@ -11,7 +11,7 @@ import {
 
 const claimsData = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
-export const SidebarCards = [
+export const sidebarCards = [
   {
     id: uid,
     icon: <NewspaperClipping size={22} />,
@@ -32,7 +32,7 @@ export const SidebarCards = [
   },
 ];
 
-export const SidebarLinks = [
+export const sidebarLinks = [
   {
     id: uid,
     icon: <CalendarDots size={22} />,
@@ -53,4 +53,10 @@ export const SidebarLinks = [
     icon: <Lifebuoy size={22} />,
     name: "Support",
   },
+];
+
+export const filterBtns = [
+  { id: uid, name: "open" },
+  { id: uid, name: "approved" },
+  { id: uid, name: "rejected" },
 ];

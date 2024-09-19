@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Logo from "../../assets/logo.svg";
-import { SidebarCards, SidebarLinks } from "../../data/data";
+import { sidebarCards, sidebarLinks } from "../../data/data";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
@@ -13,11 +13,11 @@ const Sidebar = () => {
       <hr />
 
       <div className="sidebar-cards">
-        {SidebarCards.map(({ id, icon, name, value }, idx) => {
+        {sidebarCards.map(({ id, icon, name, value }, idx) => {
           return (
             <Link
               to={"#"}
-              key={id}
+              key={id()}
               className={idx === 0 ? `sidebar-card active` : `sidebar-card`}
             >
               <div>
@@ -35,9 +35,9 @@ const Sidebar = () => {
       <hr />
 
       <div className="sidebar-links">
-        {SidebarLinks.map(({ id, icon, name }) => {
+        {sidebarLinks.map(({ id, icon, name }) => {
           return (
-            <Link to={"#"} className="sidebar-link" key={id}>
+            <Link to={"#"} className="sidebar-link" key={id()}>
               {icon}
               <p className="p-600">{name}</p>
             </Link>
@@ -68,6 +68,10 @@ const Wrapper = styled.aside`
     align-items: center;
     gap: 0.5rem;
     padding: 0 1rem 0.875rem 1rem;
+
+    img {
+      width: 28px;
+    }
   }
 
   hr {
