@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PrimaryBtn = styled.button`
-  border: none;
+  border: ${(props) => (props.$border ? props.$border : `none`)};
   background: ${(props) => (props.$bg ? props.$bg : `var(--grey-700)`)};
   color: ${(props) => (props.$color ? props.$color : `var(--grey-75)`)};
   padding-top: ${(props) => (props.$pt ? props.$pt : "6px")};
@@ -13,7 +13,7 @@ export const PrimaryBtn = styled.button`
   text-transform: capitalize;
   font-weight: ${(props) => (props.$weight ? props.$weight : 600)};
   width: ${(props) => (props.$w ? props.$w : "auto")};
-  cursor: pointer;
+  box-shadow: ${(props) => (props.$bs ? props.$bs : `initial`)};
 `;
 
 export const SecondaryBtn = styled(PrimaryBtn)``;

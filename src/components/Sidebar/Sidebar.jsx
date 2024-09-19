@@ -56,11 +56,13 @@ const Sidebar = () => {
 export default Sidebar;
 
 const Wrapper = styled.aside`
-  height: 100%;
+  height: 100vh;
   background: var(--beige);
   padding: 2.5rem 1.5rem;
   display: flex;
   flex-direction: column;
+  position: sticky;
+  top: 0;
 
   .logo-wrapper {
     display: flex;
@@ -72,10 +74,6 @@ const Wrapper = styled.aside`
     img {
       width: 28px;
     }
-  }
-
-  hr {
-    /* margin: 0 auto; */
   }
 
   .p-600 {

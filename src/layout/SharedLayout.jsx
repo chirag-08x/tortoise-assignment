@@ -17,4 +17,5 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 244px 1fr;
   background-color: var(--beige);
+  min-height: 100vh;
 `;

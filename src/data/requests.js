@@ -12,7 +12,7 @@ import {
 export const requests = [
   {
     id: uid,
-    name: "Aditya Sharma",
+    name: "Aditya Garikapati",
     designation: "Product Manager",
     product: {
       model: "iPhone 13",
@@ -37,7 +37,7 @@ export const requests = [
       color: "Blue",
       storage: "256gb",
       img: GalaxyS24,
-      addOns: 0,
+      addOns: 2,
       requestedTime: moment("2024-09-10T12:30:00"),
       requestedDate: moment("2024-09-10"),
       amount: 79999,
@@ -55,7 +55,7 @@ export const requests = [
       color: "White",
       storage: "512gb",
       img: Iphone15,
-      addOns: 0,
+      addOns: 2,
       requestedTime: moment("2024-08-19T14:45:00"),
       requestedDate: moment("2024-08-19"),
       amount: 99999,
@@ -109,7 +109,7 @@ export const requests = [
       color: "Blue",
       storage: "128gb",
       img: Iphone14,
-      addOns: 0,
+      addOns: 2,
       requestedTime: moment("2024-09-17T11:45:00"),
       requestedDate: moment("2024-09-17"),
       amount: 65900,

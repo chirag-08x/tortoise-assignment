@@ -5,6 +5,7 @@ const initialState = {
   claims: [...requests],
   filteredClaims: [...requests],
   page: 0,
+  itemsPerPage: 8,
   status: "open",
   totalPages: "",
 };
