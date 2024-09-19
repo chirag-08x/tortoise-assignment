@@ -1,0 +1,77 @@
+/* ============= GLOBAL CSS =============== */
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* colors */
+  --primary-100: rgba(255, 255, 255, 1);
+
+  /* grey */
+  --grey-50: rgba(17, 64, 54, 1);
+  --grey-75: rgba(25, 25, 25, 1);
+  --grey-100: rgba(25, 25, 25, 0.03);
+  --grey-150: rgba(50, 50, 50, 1);
+  --grey-200: rgba(75, 75, 75, 1);
+  --grey-300: rgba(238, 238, 238, 0.5);
+  --grey-400: rgba(184, 175, 164, 1);
+  --grey-500: rgba(203, 203, 203, 1);
+  --grey-600: rgba(250, 250, 250, 1);
+
+  /* rest of the colors */
+  --green: rgba(22, 175, 142, 1);
+  --purple: rgba(181, 156, 247, 1);
+  --pink: rgba(255, 145, 238, 1);
+  --white: #fff;
+  --orange: rgba(213, 112, 70, 1);
+  --beige: rgba(250, 244, 234, 1);
+
+  --small-text: 0.875rem;
+  --extra-small-text: 0.7em;
+  /* rest of the vars */
+  --backgroundColor: var(--primary-100);
+  --textColor: var(--grey-900);
+  --borderRadius: 0.25rem;
+  --letterSpacing: 1px;
+  --transition: 0.3s ease-in-out all;
+  --max-width: 1120px;
+  --fixed-width: 600px;
+
+  /* box shadow*/
+  --shadow-1: 0px 1px 0px 0px rgba(238, 238, 238, 1);
+  --shadow-2: 0px 1px 1px 0px rgba(0, 0, 0, 0.04);
+  --shadow-3: 0px 9px 4px 0px rgba(0, 0, 0, 0.01);
+  --shadow-4: 0px 14px 4px 0px rgba(0, 0, 0, 0);
+}
+
+body {
+  background: var(--backgroundColor);
+  font-family: "Inter", system-ui;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--textColor);
+}
+
+.page-100 {
+  min-height: 100vh;
+}
+
+.p-300 {
+  font-weight: 500;
+  color: var(--grey-400);
+}
+
+.p-400 {
+  font-weight: 400;
+  color: var(--grey-50);
+}
+
+.p-600 {
+  font-weight: 600;
+  color: var(--grey-50);
+}
