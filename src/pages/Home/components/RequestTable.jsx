@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { PrimaryBtn } from "../../../styles/Button";
@@ -12,14 +12,18 @@ import {
 import ClaimsList from "./ClaimsList";
 
 const RequestTable = () => {
-  const { filteredClaims, itemsPerPage } = useSelector((state) => state.claims);
+  const { filteredClaims, itemsPerPage, status } = useSelector(
+    (state) => state.claims
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(filteredClaims.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredClaims.slice(indexOfFirstItem, indexOfLastItem);
 
-  console.log("fi", currentItems);
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [status]);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {

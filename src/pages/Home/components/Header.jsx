@@ -4,9 +4,24 @@ import { PrimaryBtn } from "../../../styles/Button";
 import { useState } from "react";
 import { filterBtns } from "../../../data/data";
 import IphoneBanner from "../../../assets/iphone-banner.png";
+import { filterByType, toggleStaus } from "../../../features/Claims/claims";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
-  const [selectedBtnIdx, setSelectedBtnIdx] = useState(0);
+  const [selectedBtnIdx, setSelectedBtnIdx] = useState(null);
+  const dispatch = useDispatch();
+
+  const handleClick = (idx, name) => {
+    if (selectedBtnIdx === idx) {
+      setSelectedBtnIdx(null);
+      dispatch(toggleStaus("all"));
+      dispatch(filterByType());
+      return;
+    }
+    setSelectedBtnIdx(idx);
+    dispatch(toggleStaus(name));
+    dispatch(filterByType());
+  };
 
   return (
     <Wrapper>
@@ -22,7 +37,7 @@ const Header = () => {
                 className={
                   selectedBtnIdx === idx ? "btn-active" : "btn-default"
                 }
-                onClick={() => setSelectedBtnIdx(idx)}
+                onClick={() => handleClick(idx, name)}
                 key={id()}
                 $pt={"8px"}
                 $pb={"8px"}

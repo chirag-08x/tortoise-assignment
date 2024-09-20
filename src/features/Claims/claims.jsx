@@ -4,9 +4,8 @@ import { requests } from "../../data/requests";
 const initialState = {
   claims: [...requests],
   filteredClaims: [...requests],
-  page: 0,
   itemsPerPage: 8,
-  status: "open",
+  status: "all",
   totalPages: "",
 };
 
@@ -14,11 +13,23 @@ const claimsSlice = createSlice({
   name: "claims",
   initialState,
   reducers: {
-    filterClaims: (state, action) => {},
-    togglePage: (state, action) => {},
+    filterByType: (state, action) => {
+      if (state.status === "all") {
+        state.filteredClaims = [...state.claims];
+      } else {
+        const filterClaims = state.claims.filter(
+          ({ status }) => status === state.status
+        );
+        state.filteredClaims = filterClaims;
+      }
+    },
+    filterByName: (state, action) => {},
+    toggleStaus: (state, action) => {
+      state.status = action.payload;
+    },
   },
 });
 
 export default claimsSlice.reducer;
 
-export const { filterClaims, togglePage } = claimsSlice.actions;
+export const { filterByType, toggleStaus, filterByName } = claimsSlice.actions;

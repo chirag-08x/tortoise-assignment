@@ -22,6 +22,7 @@ const Wrapper = styled.main`
   .inner-wrapper {
     background-color: var(--white);
     /* height: 95%; */
+    min-height: 90vh;
     width: 99%;
     border-radius: 16px;
     box-shadow: var(--shadow-2), var(--shadow-3), var(--shadow-4);

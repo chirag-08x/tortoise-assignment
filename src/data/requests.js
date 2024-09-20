@@ -25,7 +25,7 @@ export const requests = [
       amount: 58999,
       tenure: 12,
     },
-    status: "pending",
+    status: "open",
     availableLimit: 50000,
   },
   {
@@ -97,7 +97,7 @@ export const requests = [
       amount: 149999,
       tenure: 36,
     },
-    status: "pending",
+    status: "open",
     availableLimit: 100000,
   },
   {
@@ -187,7 +187,7 @@ export const requests = [
       amount: 145000,
       tenure: 36,
     },
-    status: "pending",
+    status: "open",
     availableLimit: 90000,
   },
   {
@@ -241,7 +241,7 @@ export const requests = [
       amount: 79999,
       tenure: 12,
     },
-    status: "pending",
+    status: "open",
     availableLimit: 65000,
   },
   {
@@ -295,7 +295,7 @@ export const requests = [
       amount: 58999,
       tenure: 12,
     },
-    status: "pending",
+    status: "open",
     availableLimit: 50000,
   },
   {
@@ -367,7 +367,7 @@ export const requests = [
       amount: 149999,
       tenure: 36,
     },
-    status: "pending",
+    status: "open",
     availableLimit: 100000,
   },
   {
@@ -457,7 +457,7 @@ export const requests = [
       amount: 145000,
       tenure: 36,
     },
-    status: "pending",
+    status: "open",
     availableLimit: 90000,
   },
   {
@@ -511,7 +511,7 @@ export const requests = [
       amount: 79999,
       tenure: 12,
     },
-    status: "pending",
+    status: "open",
     availableLimit: 65000,
   },
   {
@@ -565,7 +565,7 @@ export const requests = [
       amount: 58999,
       tenure: 12,
     },
-    status: "pending",
+    status: "open",
     availableLimit: 50000,
   },
   {
@@ -637,7 +637,7 @@ export const requests = [
       amount: 149999,
       tenure: 36,
     },
-    status: "pending",
+    status: "open",
     availableLimit: 100000,
   },
   {
