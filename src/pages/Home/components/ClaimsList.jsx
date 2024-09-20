@@ -1,37 +1,39 @@
 import styled from "styled-components";
 import { formatPrice } from "../../../utils/formatPrice";
-import { CaretRight } from "@phosphor-icons/react";
+import { CaretRight, CheckCircle, Clock, XCircle } from "@phosphor-icons/react";
 import { getRandomUser } from "../../../services/user";
 import { useEffect, useState } from "react";
 import { Select, Option } from "../../../styles/DropDown";
 
 const ClaimsList = ({ items }) => {
-  const [avatar, setAvatar] = useState(null);
+  const [avatar, setAvatar] = useState([]);
 
   const fetchAvatar = async () => {
-    const imageUrl = await getRandomUser();
-    setAvatar(imageUrl); // Update the state with the fetched image URL
+    const imageUrls = await getRandomUser(items?.length);
+    setAvatar(imageUrls);
   };
 
   useEffect(() => {
-    fetchAvatar();
-  }, []);
+    if (items && items.length > 0) {
+      fetchAvatar(items?.length);
+    }
+  }, [items]);
   return (
     <Wrapper>
       <table>
         <thead>
           <tr>
-            <th>Employee</th>
-            <th>Device</th>
-            <th>Requested on</th>
-            <th>Amount payable</th>
-            <th></th>
-            <th></th>
+            <th className="p-600">Employee</th>
+            <th className="p-600">Device</th>
+            <th className="p-600">Requested on</th>
+            <th className="p-600">Amount payable</th>
+            <th className="p-600"></th>
+            <th className="p-600"></th>
           </tr>
         </thead>
 
         <tbody>
-          {items.map((data) => {
+          {items.map((data, idx) => {
             const {
               id,
               name,
@@ -55,7 +57,7 @@ const ClaimsList = ({ items }) => {
               <tr key={id()}>
                 <td className="user-info">
                   <div className="cell-wrapper">
-                    <img src={avatar} alt="avatar" />
+                    <img src={avatar[idx]?.picture?.medium} alt="Loading..." />
                     <div>
                       <p className="p-600">{name}</p>
                       <p className="p-500">{designation}</p>
@@ -97,10 +99,16 @@ const ClaimsList = ({ items }) => {
 
                 <td>
                   <div className="cell-wrapper">
-                    <Select>
-                      <Option value="pending">Approve</Option>
-                      <Option value="pending">Pending</Option>
-                      <Option value="pending">Rejected</Option>
+                    <Select className="p-600">
+                      <Option value="pending">
+                        <CheckCircle size={32} /> Approve
+                      </Option>
+                      <Option value="pending">
+                        <Clock size={32} /> Pending
+                      </Option>
+                      <Option value="pending">
+                        <XCircle size={32} /> Rejected
+                      </Option>
                     </Select>
                   </div>
                 </td>
@@ -135,6 +143,7 @@ const Wrapper = styled.div`
       th {
         text-align: left;
         padding: 14px 12px;
+        font-size: 14px;
 
         &:first-child {
           border-top-left-radius: 8px;
@@ -150,6 +159,7 @@ const Wrapper = styled.div`
 
     tbody {
       border: 1px solid var(--grey-300);
+
       td {
         padding: 0.7rem 2rem;
         border-bottom: 1px solid var(--grey-300);
