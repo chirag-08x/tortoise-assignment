@@ -95,3 +95,11 @@ button {
   font-weight: 600;
   color: var(--grey-75);
 }
+
+::placeholder {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  color: var(--grey-900);
+}

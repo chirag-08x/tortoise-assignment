@@ -4,7 +4,11 @@ import { PrimaryBtn } from "../../../styles/Button";
 import { useState } from "react";
 import { filterBtns } from "../../../data/data";
 import IphoneBanner from "../../../assets/iphone-banner.png";
-import { filterByType, toggleStaus } from "../../../features/Claims/claims";
+import {
+  filterByType,
+  toggleSearchTermFilter,
+  toggleStaus,
+} from "../../../features/Claims/claims";
 import { useDispatch } from "react-redux";
 
 const Header = () => {
@@ -16,11 +20,13 @@ const Header = () => {
       setSelectedBtnIdx(null);
       dispatch(toggleStaus("all"));
       dispatch(filterByType());
+      dispatch(toggleSearchTermFilter(""));
       return;
     }
     setSelectedBtnIdx(idx);
     dispatch(toggleStaus(name));
     dispatch(filterByType());
+    dispatch(toggleSearchTermFilter(""));
   };
 
   return (

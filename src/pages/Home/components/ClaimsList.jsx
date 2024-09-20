@@ -54,7 +54,7 @@ const ClaimsList = ({ items }) => {
             } = data;
 
             return (
-              <tr key={id()}>
+              <tr key={id()} onClick={() => console.log("hello")}>
                 <td className="user-info">
                   <div className="cell-wrapper">
                     <img src={avatar[idx]?.picture?.medium} alt="Loading..." />
@@ -97,18 +97,16 @@ const ClaimsList = ({ items }) => {
                   </div>
                 </td>
 
-                <td>
+                <td onClick={(e) => e.stopPropagation()}>
                   <div className="cell-wrapper">
-                    <Select className="p-600">
-                      <Option value="pending">
-                        <CheckCircle size={32} /> Approve
-                      </Option>
-                      <Option value="pending">
-                        <Clock size={32} /> Pending
-                      </Option>
-                      <Option value="pending">
-                        <XCircle size={32} /> Rejected
-                      </Option>
+                    <Select
+                      className="p-600"
+                      value={status}
+                      onChange={() => {}}
+                    >
+                      <Option value="approved">Approved</Option>
+                      <Option value="open">Pending</Option>
+                      <Option value="rejected">Rejected</Option>
                     </Select>
                   </div>
                 </td>
@@ -159,6 +157,9 @@ const Wrapper = styled.div`
 
     tbody {
       border: 1px solid var(--grey-300);
+      tr {
+        cursor: pointer;
+      }
 
       td {
         padding: 0.7rem 2rem;

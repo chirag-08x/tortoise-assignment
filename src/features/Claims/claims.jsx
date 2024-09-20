@@ -6,7 +6,7 @@ const initialState = {
   filteredClaims: [...requests],
   itemsPerPage: 8,
   status: "all",
-  totalPages: "",
+  searchTerm: "",
 };
 
 const claimsSlice = createSlice({
@@ -23,13 +23,40 @@ const claimsSlice = createSlice({
         state.filteredClaims = filterClaims;
       }
     },
-    filterByName: (state, action) => {},
+
     toggleStaus: (state, action) => {
       state.status = action.payload;
+    },
+
+    toggleSearchTermFilter: (state, action) => {
+      state.searchTerm = action.payload;
+
+      if (state.searchTerm) {
+        let filterClaims = state.claims.filter(({ name }) =>
+          name.toLowerCase().includes(state.searchTerm.toLowerCase())
+        );
+
+        if (state.status !== "all") {
+          filterClaims = filterClaims.filter(
+            ({ status }) => status === state.status
+          );
+        }
+
+        state.filteredClaims = filterClaims;
+      } else {
+        if (state.status === "all") {
+          state.filteredClaims = [...state.claims];
+        } else {
+          state.filteredClaims = state.claims.filter(
+            ({ status }) => status === state.status
+          );
+        }
+      }
     },
   },
 });
 
 export default claimsSlice.reducer;
 
-export const { filterByType, toggleStaus, filterByName } = claimsSlice.actions;
+export const { filterByType, toggleStaus, toggleSearchTermFilter } =
+  claimsSlice.actions;

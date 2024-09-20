@@ -295,7 +295,7 @@ export const requests = [
       amount: 58999,
       tenure: 12,
     },
-    status: "open",
+    status: "approved",
     availableLimit: 50000,
   },
   {
@@ -565,7 +565,7 @@ export const requests = [
       amount: 58999,
       tenure: 12,
     },
-    status: "open",
+    status: "rejected",
     availableLimit: 50000,
   },
   {

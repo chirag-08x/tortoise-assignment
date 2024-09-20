@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { PrimaryBtn } from "../../../styles/Button";
 import { SearchBox } from "../../../styles/SearchBox";
@@ -10,9 +10,10 @@ import {
   CaretLeft,
 } from "@phosphor-icons/react";
 import ClaimsList from "./ClaimsList";
+import { toggleSearchTermFilter } from "../../../features/Claims/claims";
 
 const RequestTable = () => {
-  const { filteredClaims, itemsPerPage, status } = useSelector(
+  const { filteredClaims, itemsPerPage, status, searchTerm } = useSelector(
     (state) => state.claims
   );
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,10 +21,11 @@ const RequestTable = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredClaims.slice(indexOfFirstItem, indexOfLastItem);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [status]);
+  }, [status, searchTerm]);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -37,11 +39,20 @@ const RequestTable = () => {
     }
   };
 
+  const handleSearch = (e) => {
+    const value = e.target.value?.toLowerCase();
+    dispatch(toggleSearchTermFilter(value));
+  };
+
   return (
     <Wrapper>
       <div className="options">
         <div>
-          <SearchBox placeholder={`Search by name`} />
+          <SearchBox
+            value={searchTerm}
+            onChange={handleSearch}
+            placeholder={`Search by name`}
+          />
         </div>
         <div className="filter-btns">
           <PrimaryBtn
@@ -75,7 +86,8 @@ const RequestTable = () => {
         <div className="pages">
           <button
             className="caret-btns"
-            onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
+            // onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
+            onClick={handlePrevPage}
           >
             <CaretLeft size={18} />
           </button>
@@ -89,6 +101,7 @@ const RequestTable = () => {
                 $bg="var(--grey-600)"
                 $color="var(--grey-900)"
                 onClick={() => setCurrentPage(idx + 1)}
+                key={idx}
               >
                 {idx + 1}
               </PrimaryBtn>
@@ -96,9 +109,10 @@ const RequestTable = () => {
           })}
           <button
             className="caret-btns"
-            onClick={() =>
-              currentPage < totalPages && setCurrentPage(currentPage + 1)
-            }
+            // onClick={() =>
+            //   currentPage < totalPages && setCurrentPage(currentPage + 1)
+            // }
+            onClick={handleNextPage}
           >
             <CaretRight size={18} />
           </button>
